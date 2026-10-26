@@ -165,6 +165,7 @@ class GuestbookUITests {
 		// SelenideElement is a subclass of WebElement.
 		// scrollTo() is a Selenide method to scroll the element into view before clicking it.
 
+		$("#email").setValue("glados@aperture.science");
 		nameInput.setValue("GLaDOS");
 		textInput.setValue("The cake is a lie.");
 		button.click();

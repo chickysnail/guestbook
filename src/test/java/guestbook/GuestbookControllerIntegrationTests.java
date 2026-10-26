@@ -98,6 +98,7 @@ class GuestbookControllerIntegrationTests {
 		assertThat(mvc.perform(post("/guestbook")
 						.param("text", "Test Message")
 						.param("name", "Test Name")
+						.param("email", "test@example.com")
 				)
 		)// All 3 assertions check if a redirect happens, but every assertion checks a different aspect of the redirect
 		 .hasStatus3xxRedirection()

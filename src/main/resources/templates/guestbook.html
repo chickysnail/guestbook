@@ -42,6 +42,7 @@
 								<h2 th:text="${index} + '. ' + ${entry.name}" class="card-title h5">1. Posting</h2>
 								<time class="date text-body-secondary" th:datetime="${entry.date}"
 									  th:text="${#temporals.format(entry.date, 'dd. MMMM yyyy - HH:mm')}">Datum</time>
+								<a class="entry-email d-block" th:href="'mailto:' + ${entry.email}" th:text="${entry.email}">mail@example.com</a>
 							</div>
 							<!-- A real form, so that deleting also works without JavaScript. HTMX takes over if available. -->
 							<form sec:authorize="hasRole('ADMIN')" th:method="delete" th:action="@{/guestbook/{id}(id=${entry.id})}" th:attr="data-entry-id=${entry.id}">
@@ -69,6 +70,11 @@
 					<label for="name" class="form-label" th:text="#{guestbook.form.name}">Name</label>
 					<input class="form-control" type="text" th:field="*{name}" th:errorclass="is-invalid" required="required" />
 					<div th:if="${#fields.hasErrors('name')}" class="invalid-feedback" th:text="#{guestbook.form.name.required}">Please provide a name.</div>
+				</div>
+				<div class="mb-3">
+					<label for="email" class="form-label" th:text="#{guestbook.form.email}">E-Mail</label>
+					<input class="form-control" type="email" th:field="*{email}" th:errorclass="is-invalid" required="required" />
+					<div th:if="${#fields.hasErrors('email')}" class="invalid-feedback" th:text="#{guestbook.form.email.invalid}">Please provide a valid email address.</div>
 				</div>
 				<div class="mb-3">
 					<label for="text" class="form-label" th:text="#{guestbook.form.text}">Text</label>
